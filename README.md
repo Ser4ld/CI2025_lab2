@@ -1,9 +1,5 @@
 # TSP Genetic Algorithm with Adaptive Mutation
 
-A hybrid genetic algorithm implementation for solving the Traveling Salesman Problem (TSP), combining greedy initialization, adaptive mutation strategies, and 2-opt local search optimization.
-
-## Overview
-
 This solution uses a **memetic algorithm** approach that combines:
 - **Greedy + Random Initialization**: Hybrid population with up to 50% nearest neighbor tours and random permutations for diversity
 - **Adaptive Mutation**: Changes exploration/exploitation balance based on evolution phase

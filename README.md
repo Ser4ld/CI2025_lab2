@@ -32,14 +32,10 @@ Greedy heuristic constructing tours by always visiting the nearest unvisited cit
 - **Returns**: Complete tour as city indices array
 
 #### `initialize_population(distance_matrix, pop_size) -> List[ndarray]`
-Creates hybrid population with **up to 50% greedy tours** (limited by `min(n_cities, pop_size//2)`).
+Creates hybrid population with **up to 50% greedy tours**.
 - **Parameters**:
   - `distance_matrix`: Problem instance
   - `pop_size`: Population size
-- **Strategy**:
-  - Generates greedy tours from uniformly spaced starting cities (max 50% of population)
-  - Fills remainder with random permutations for genetic diversity
-  - Ratio varies by problem size: small problems have lower greedy percentage
 - **Returns**: List of tour arrays
 
 ---
@@ -53,9 +49,7 @@ Selects parent by running mini-competitions.
 
 #### `order_crossover(parent1, parent2) -> ndarray`
 Preserves relative city positions from both parents.
-- **Process**: 
-  1. Copy random segment from parent1
-  2. Fill remaining positions with parent2 cities in order
+- **Process**: Copy random segment from parent1 and fill remaining positions with parent2 cities in order
 - **Returns**: Valid offspring tour
 
 #### Mutation Operators
@@ -111,7 +105,6 @@ Core evolutionary loop with the following workflow:
 
 ### 5. **Adaptive Configuration**
 
-#### `solve_problem(problem_file) -> dict`
 Automatically tunes parameters based on problem size:
 
 | Cities | Generations | Pop Size | Elite | 2-opt Freq | 2-opt Iter |
@@ -121,18 +114,6 @@ Automatically tunes parameters based on problem size:
 | ≤500   | 500         | 150      | 10    | every 20   | 50         |
 | >500   | 500         | 150      | 10    | every 30   | 10         |
 
-**Rationale**: Larger problems use less frequent/intensive local search to balance quality and runtime.
+Larger problems use less frequent/intensive local search to balance quality and runtime.
 
----
-
-## Visualization
-
-#### `plot_evolution(history, problem_name)`
-Displays algorithm progress with:
-- **Cost curve**: Best solution cost over generations (dark green line)
-- **Phase backgrounds**: Color-coded mutation strategy phases
-  - **Blue (0-30%)**: Exploration phase with Inversion + Insertion
-  - **Orange (30-70%)**: Mixed phase with all mutation operators
-  - **Red (70-100%)**: Refinement phase with Swap + Inversion
-- **Improvement markers**: Orange dots indicate when better solutions are found
 

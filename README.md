@@ -2,7 +2,7 @@
 
 A hybrid genetic algorithm implementation for solving the Traveling Salesman Problem (TSP), combining greedy initialization, adaptive mutation strategies, and 2-opt local search optimization.
 
-## 🎯 Overview
+## Overview
 
 This solution uses a **memetic algorithm** approach that combines:
 - **Greedy + Random Initialization**: Hybrid population with up to 50% nearest neighbor tours and random permutations for diversity
@@ -13,7 +13,7 @@ The algorithm automatically adjusts parameters based on problem size to balance 
 
 ---
 
-## 📊 Algorithm Structure
+## Algorithm Structure
 
 ### 1. **Initialization** 
 Hybrid population strategy:
@@ -125,7 +125,7 @@ Automatically tunes parameters based on problem size:
 
 ---
 
-## 📈 Visualization
+## Visualization
 
 #### `plot_evolution(history, problem_name)`
 Displays algorithm progress with:
